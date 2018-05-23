@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Table Form">
+        <meta name="keywords" content="Frontend Development, Table Form">
+        <meta name="author" content="Shirin Doroudian">
+        <title>Table Form</title>
+        <link rel="stylesheet" type="text/css" href="style3.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <script type="text/javascript">
+            /* this function will create a table from user's inputs
+               first defining variables to store number of rows and columns and background color,
+                then adding tr and td by for loops and finally returning the table by innerHTML property*/ 
+            function createTable() {
+                var rowVar = document.getElementById('row').value;
+                var columnVar = document.getElementById('column').value;
+                var colorVar =  document.getElementById('bgcolor').value;
+                var openVar = `<table border="4" bgcolor = ${colorVar}>\n`;
+                var bodyVar = '';
+                for( var i=0; i<rowVar;i++) {
+                    bodyVar += '<tr>';
+                    for( var j=0; j<columnVar;j++) {
+                        bodyVar += '<td>';
+                        bodyVar += '';
+                        bodyVar += '</td>'
+                    }
+                    bodyVar += '</tr>\n';
+                }
+                var closeVar = '</table>';
+                document.getElementById('table').innerHTML =  openVar +  bodyVar + closeVar;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="left-side">
+                <h1>Create your customized table!</h1>
+                <form name="table" id="form">
+                    <div class="form-row">
+                        <label class="form-label" for="row">Choose number of rows (1-10):</label>
+                        <input type="number" min="1" max="10" name="row" id="row">
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="column">Choose number of columns (1-10):</label>
+                        <input type="number" min="1" max="10" name="column" id="column">
+                    </div>
+                    <div class="form-row">
+                            <label class="form-label" for="bgcolor">Choose a background color:</label>
+                            <input type="color" name="bgcolor" id="bgcolor">
+                        </div>
+                       
+                    <input type="button" name="button" id="button" class="button form-row" value="Create Table!" onclick='createTable();'>
+                </form>
+            </div>
+            <div id="right-side">
+                <div id="table"></div> 
+            </div>
+        </div>
+    </body>   
+</html>
